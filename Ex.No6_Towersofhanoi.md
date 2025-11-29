@@ -1,48 +1,37 @@
-# Ex.No: 7  Logic Programming –  Logic Circuit Design
+# Ex.No: 6   Logic Programming – Factorial of number                                                                               
 ### REGISTER NUMBER : 212222060039
+
 ### AIM: 
-To write a logic program to design a circuit like half adder and half subtractor.
-###  Algorithm:
-1. Start the Program
-2. Design a AND gate logic if both inputs are 1 then output is 1.
-3. Design a OR gate logic if any one of input is 1 then output is 1.
-4. Design a XOR gate logic if both inputs are different then output is 1.
-5. Design a NOT gate logic if input is 0 then output is 1.
-6. Design a half adder and half subtractor using the rules.
-7. Test the logic.
-8. Stop the program.
+To  write  a logic program  to solve Towers of Hanoi problem  using SWI-PROLOG. 
+### Algorithm:
+1. Start the program
+2.  Write a rules for finding solution of Towers of Hanoi in SWI-PROLOG.
+3.  a )	If only one disk  => Move disk from X to Y.
+4.  b)	If Number of disk greater than 0 then
+5.        i)	Move  N-1 disks from X to Z.
+6.        ii)	Move  Nth disk from X to Y
+7.        iii)	Move  N-1 disks from Y to X.
+8. Run the program  to find answer of  query.
 
 ### Program:
 ```
-xor(0, 0, 0).
-xor(0, 1, 1).
-xor(1, 0, 1).
-xor(1, 1, 0).
-
-and(0, 0, 0).
-and(0, 1, 0).
-and(1, 0, 0).
-and(1, 1, 1).
-
-not(0, 1).
-not(1, 0).
-
-half_adder(A, B, Sum, Carry) :-
-    xor(A, B, Sum),
-    and(A, B, Carry).
-
-half_subtractor(A, B, Difference, Borrow) :-
-    xor(A, B, Difference),
-    not(A, NA),
-    and(NA, B, Borrow).
-
+move(1,X,Y,_) :-  
+    write('Move top disk from '), 
+    write(X), 
+    write(' to '), 
+    write(Y), 
+    nl. 
+move(N,X,Y,Z) :- 
+    N>1, 
+    M is N-1, 
+    move(M,X,Z,Y), 
+    move(1,X,Y,_), 
+    move(M,Z,Y,X).
 ```
+
 ### Output:
-
-![image](https://github.com/user-attachments/assets/4ee1405b-c823-4ac8-987f-3791f14d4506)
-
-![image](https://github.com/user-attachments/assets/a9b3eac6-ceb1-4f4e-b6bb-86988a09fc8d)
+![image](https://github.com/user-attachments/assets/07266686-b27f-464e-bc7c-ac333ed4dc73)
 
 
 ### Result:
-Thus the truth table of circuit verified sucessfully.
+Thus the solution of Towers of Hanoi problem was found by logic programming.
